@@ -26,7 +26,7 @@ syntax, so perhaps we could use Go syntax for that (`func f(param1, param2)
 identifier` rather than `identifier type`.
 
 For stack safety: When defining a function, the programmer must specify what to
-do if the function could not be called (for example, if the stack if full). For
+do if the function could not be called (for example, if the stack is full). For
 example, `malloc` for allocating dynamic memory would be structured something
 like follows:
 
@@ -66,8 +66,24 @@ try {
 }
 ```
 
-Note that since (almost) arbitrary code could be placed in the `onfail` block
-(both in case of functions and in case of try/onfail), the `onfail` block must
-not fail; therefore, the compiler must begin to fail functions, whenever
-subroutines that those functions call have `onfail` blocks that would be
-impossible to fulfill due to stack size constraints.
+Note that the `onfail` block must not fail; therefore, the compiler must begin
+to fail functions, whenever subroutines that those functions call have `onfail`
+blocks that would be impossible to fulfill due to stack size constraints.
+
+Functions can be marked as `nofail`, in either the function definition or when
+calling it. A `nofail` specification when calling it overrides the function
+definition.
+
+```e2
+nofail func free() () {
+	/* What free is supposed to do */
+}
+```
+
+This will ensure that calling `free` can never fail due to lack of stack space.
+If such a case were to present itself, the compiler must make the caller fail
+instead. This is recursive, and thus you cannot create a loop of `nofail` functions.
+You may use `canfail` to be explicit about the reverse in function definitions,
+or to override a function when calling it. In the latter case, if the function
+does not define a `onfail` section, you must wrap it in a `try {...} onfail {...}`
+block.
