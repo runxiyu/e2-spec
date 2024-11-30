@@ -85,5 +85,5 @@ If such a case were to present itself, the compiler must make the caller fail
 instead. This is recursive, and thus you cannot create a loop of `nofail` functions.
 You may use `canfail` to be explicit about the reverse in function definitions,
 or to override a function when calling it. In the latter case, if the function
-does not define a `onfail` section, you must wrap it in a `try {...} onfail {...}`
+does not define an `onfail` section, you must wrap it in a `try {...} onfail {...}`
 block.
