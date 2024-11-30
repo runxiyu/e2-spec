@@ -21,7 +21,7 @@ pointers to be labelled.
 We haven't decided on general syntax yet. We generally prefer C-like syntax,
 although syntax inspired from other languages are occasionally used when
 appropriate; for example, multiple return values look rather awkward in the C
-syntax, so perhaps we could use Go syntax for that (`func f(param1, return2)
+syntax, so perhaps we could use Go syntax for that (`func f(param1, param2)
 (return1, return2)`), although we'd prefer naming parameters with `type
 identifier` rather than `identifier type`.
 
