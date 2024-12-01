@@ -1,0 +1,10 @@
+Some reasons for some stuff done here. Not going to be a part of the specification, just ideas for why.
+
+nofail:
+	If you can get into a situation where there's no way to free resources you no longer need, you have done something wrong.
+	If the language doesn't give you a way to do the above, the language has done something wrong.
+	free(), close(), and other such should be marked as `nofail`, so that you don't run out of stack space trying to call them, resulting in inability to free resources.
+
+	Good for situations where failing to call a function partway through is deemed (by the programmer) undesirable.
+
+	Also usable for times when you don't want to have to deal with failure.
