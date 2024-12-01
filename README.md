@@ -98,3 +98,6 @@ block.
 4. More powerful preprocessor.
 5. Integer underflow and overflow will be detectable and usable after it has already
    occurred.
+6. You should be able to release variables from the scope they are in, and not only
+   be controllable by code blocks, so stack variables can be released in differing
+   orders.
