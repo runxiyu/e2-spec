@@ -95,4 +95,6 @@ block.
 2. Minimize undefined behavior, and set stricter rules for
    implementation-defined behavior.
 3. Support compile-time code execution.
-4. More powerful preprocessor?
+4. More powerful preprocessor.
+5. Integer underflow and overflow will be detectable and usable after it has already
+   occurred.
