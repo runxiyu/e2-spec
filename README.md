@@ -87,3 +87,12 @@ You may use `canfail` to be explicit about the reverse in function definitions,
 or to override a function when calling it. In the latter case, if the function
 does not define an `onfail` section, you must wrap it in a `try {...} onfail {...}`
 block.
+
+## Other non-trivial differences from C
+
+1. Instead of `errno`, we use multiple return values to indicate errors where
+   appropriate.
+2. Minimize undefined behavior, and set stricter rules for
+   implementation-defined behavior.
+3. Support compile-time code execution.
+4. More powerful preprocessor?
