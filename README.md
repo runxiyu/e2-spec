@@ -102,3 +102,4 @@ block.
    be controllable by code blocks, so stack variables can be released in differing
    orders.
 7. Strings are not null-terminated by default.
+8. There is no special null pointer.
