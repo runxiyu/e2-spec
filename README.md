@@ -90,16 +90,20 @@ block.
 
 ## Other non-trivial differences from C
 
-1. Instead of `errno`, we use multiple return values to indicate errors where
-   appropriate.
-2. Minimize undefined behavior, and set stricter rules for
-   implementation-defined behavior.
-3. Support compile-time code execution.
-4. More powerful preprocessor.
-5. Integer underflow and overflow will be detectable and usable after it has already
-   occurred.
-6. You should be able to release variables from the scope they are in, and not only
-   be controllable by code blocks, so stack variables can be released in differing
-   orders.
-7. Strings are not null-terminated by default.
-8. There is no special null pointer.
+1.  Instead of `errno`, we use multiple return values to indicate errors where
+    appropriate.
+2.  Minimize undefined behavior, and set stricter rules for
+    implementation-defined behavior.
+3.  Support compile-time code execution.
+4.  More powerful preprocessor.
+5.  Integer underflow and overflow will be detectable and usable after it has already
+    occurred.
+6.  You should be able to release variables from the scope they are in, and not only
+    be controllable by code blocks, so stack variables can be released in differing
+    orders.
+7.  Strings are not null-terminated by default.
+8.  There is no special null pointer.
+9.  No implicit integer promotion.
+10. Void pointers of varying depth (such as void **) can be implicitly casted to
+    pointers of the same or deeper depth (such as void ** -> int ***,
+    but not void ** -> int *).
