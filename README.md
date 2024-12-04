@@ -59,7 +59,7 @@ This pattern is also useful outside of functions as a unit, therefore we
 introduce the following syntax for generic stack failure handling:
 
 ```e2
-try {
+either {
 	/* Do something */
 } onfail {
 	/* Do something else, perhaps returning errors */
@@ -85,8 +85,28 @@ If such a case were to present itself, the compiler must make the caller fail
 instead. This is recursive, and thus you cannot create a loop of `nofail` functions.
 You may use `canfail` to be explicit about the reverse in function definitions,
 or to override a function when calling it. In the latter case, if the function
-does not define an `onfail` section, you must wrap it in a `try {...} onfail {...}`
-block.
+does not define an `onfail` section, you must wrap it in a `either {...} onfail
+{...}` block.
+
+## Overflow/underflow handling
+
+Integer overflow/underflow is *usually* undesirable behavior.
+
+Simple arithmetic operators return two values. The first is the result of the
+operation, and the second is a boolean that represents whether an overflow
+occured. The second return may be ignored.
+
+Additionally, we define a new syntax for detecting integer overflow on a wider
+scope:
+```e2
+int y;
+try {
+	/* Perform arithmetic */
+	y = x**2 + 127*x;
+} on_overflow {
+	/* Do something else */
+}
+```
 
 ## Other non-trivial differences from C
 
@@ -96,14 +116,12 @@ block.
     implementation-defined behavior.
 3.  Support compile-time code execution.
 4.  More powerful preprocessor.
-5.  Integer underflow and overflow will be detectable and usable after it has already
-    occurred.
-6.  You should be able to release variables from the scope they are in, and not only
-    be controllable by code blocks, so stack variables can be released in differing
-    orders.
-7.  Strings are not null-terminated by default.
-8.  There is no special null pointer.
-9.  No implicit integer promotion.
-10. Void pointers of varying depth (such as void **) can be implicitly casted to
-    pointers of the same or deeper depth (such as void ** -> int ***,
-    but not void ** -> int *).
+5.  You should be able to release variables from the scope they are in, and not
+    only be controllable by code blocks, so stack variables can be released in
+    differing orders.
+6.  Strings are not null-terminated by default.
+7.  There is no special null pointer.
+8.  No implicit integer promotion.
+9.  Void pointers of varying depth (such as `void **`) can be implicitly casted
+    to pointers of the same or deeper depth (such as `void **` -> `int ***`,
+    but not `void **` -> `int *`).
