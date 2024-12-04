@@ -96,8 +96,9 @@ does not define an `onfail` section, you must wrap it in a `either {...} onfail
 Integer overflow/underflow is *usually* undesirable behavior.
 
 Simple arithmetic operators return two values. The first is the result of the
-operation, and the second is a boolean that represents whether an overflow
-occured. The second return may be ignored.
+operation, and the second is the overflowed part, which is a boolean in
+addition/subtraction and the carried part in multiplication; but for division,
+it is the remainder. The second return may be ignored.
 
 Additionally, we define a new syntax for detecting integer overflow on a wider
 scope:
@@ -110,6 +111,8 @@ try {
 	/* Do something else */
 }
 ```
+The overflow is caught if and only if it is not handled at the point of the
+operation and has not been handled at an inner `on_overflow`.
 
 ## Other non-trivial differences from C
 
