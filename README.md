@@ -1,4 +1,7 @@
-# e2 language testing space
+---
+title: e2 language testing space
+author: Test_User and Runxi Yu
+---
 
 Many languages attempt to be "memory safe" by processes such as reference
 counting, borrow checking, and mark-and-sweep garbage collection. These, for
