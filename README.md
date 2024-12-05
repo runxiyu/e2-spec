@@ -1,8 +1,6 @@
-# The e² programming language
+# The e² programming language specification
 
-- [Home page](https://docs.runxiyu.org/e2/)
-- [C implementation](https://docs.runxiyu.org/tau2/)
-- [Git repositories](https://git.runxiyu.org/e2/)
-- [Ticket tracker](https://todo.sr.ht/~runxiyu/e2/)
-- [Announcement list](https://lists.sr.ht/~runxiyu/e2-announce/)
-- [Development list](https://lists.sr.ht/~runxiyu/e2-devel/)
+This is the specification for the [e²](https://e2.runxiyu.org/) programming
+language.
+
+You may [read this specification online](https://docs.runxiyu.org/e2-spec/).

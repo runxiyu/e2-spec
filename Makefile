@@ -1,11 +1,18 @@
+# GNU Make is required
+
 .PHONY: upload default
 
-default: language_description.html
+default: build/language_description.html build/index.html build/style.css
 
 .SUFFIXES: .md .html
 
-.md.html:
+build/%.html: %.md
+	mkdir -p build
 	pandoc --mathml -so $@ -c style.css $<
 
-upload: language_description.html style.css
-	rsync --mkpath language_description.html style.css runxiyu.org:/var/www/docs/e2/
+build/%.css: %.css
+	mkdir -p build
+	cp $< $@
+
+upload:
+	rsync --delete-after --recursive --mkpath build/ runxiyu.org:/var/www/docs/e2/
