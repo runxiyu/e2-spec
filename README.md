@@ -1,7 +1,9 @@
 ---
-title: e2 language testing space
+title: $e^2$ language testing space
 author: Test_User and Runxi Yu
 ---
+
+Note: The name "$e^2$" (or `e2` in ASCII) is subject to change.
 
 Many languages attempt to be "memory safe" by processes such as reference
 counting, borrow checking, and mark-and-sweep garbage collection. These, for
@@ -14,7 +16,7 @@ memory safe languages) do not handle stack overflows correctly;
 although dynamic allocation failures could be easily handled, correctly-written
 programs could crash when running out of stack space, with no method to detect
 this condition and fail gracefully.
-
+)
 Conventional memory safety features are not our priority, but we may choose to
 include them in the future, likely with reference counting while allowing weak
 pointers to be labelled.
