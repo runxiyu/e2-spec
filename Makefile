@@ -1,7 +1,11 @@
-.PHONY: upload
+.PHONY: upload default
 
-README.html: README.md
-	pandoc --mathml -so README.html -c style.css README.md
+default: language_description.html
 
-upload: README.html style.css
-	rsync --mkpath README.html style.css runxiyu.org:/var/www/docs/e2/
+.SUFFIXES: .md .html
+
+.md.html:
+	pandoc --mathml -so $@ -c style.css $<
+
+upload: language_description.html style.css
+	rsync --mkpath language_description.html style.css runxiyu.org:/var/www/docs/e2/
