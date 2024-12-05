@@ -3,7 +3,7 @@ title: $e^2$ language testing space
 author: Test_User and Runxi Yu
 ---
 
-Note: The name "$e^2$" (or `e2` in ASCII) is subject to change.
+Note: The name "$e^2$" (or "e2" in plain text) is subject to change.
 
 Many languages attempt to be "memory safe" by processes such as reference
 counting, borrow checking, and mark-and-sweep garbage collection. These, for
