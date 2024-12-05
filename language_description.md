@@ -34,20 +34,22 @@ identifier` rather than `identifier type`.
 
 When defining a function, the programmer must specify what to do if the
 function could not be called (for example, if the stack is full). For example,
-`malloc` for allocating dynamic memory would be structured something like
-follows:
+`malloc` for allocating dynamic memory could be structured like this:
 
 ```e2
-func malloc(size_t s) (void*) {
+func malloc(size_t s) (void*, err) {
 	/* What malloc is supposed to do */
-	return ptr;
+	return ptr, NIL;
 } onfail {
-	return NULL;
+	return 0, ESTACK;
 }
 ```
 
 If something causes `malloc` to be uncallable, e.g. if there is insufficient
-stack space to hold its local variables, it simply returns NULL as if it failed.
+stack space to hold its local variables, it simply returns a meaningless
+pointer and a non-nil error value. Note that although we return "`0`" in the
+example code above, the zero pointer is not guaranteed to be an invalid pointer
+in $e^2$.
 
 Other functions may have different methods of failure. Some might return an
 error, so it might be natural to set their error return value to something like
