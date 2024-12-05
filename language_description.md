@@ -144,3 +144,4 @@ operation and has not been handled at an inner `on_overflow`.
 9.  Void pointers of varying depth (such as `void **`) can be implicitly casted
     to pointers of the same or deeper depth (such as `void **` -> `int ***`,
     but not `void **` -> `int *`).
+10. There is language-level support for tagged unions.
