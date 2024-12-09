@@ -37,7 +37,7 @@ function could not be called (for example, if the stack is full). For example,
 `malloc` for allocating dynamic memory could be structured like this:
 
 ```e2
-func malloc(size_t s) (void*, err) {
+func malloc(size_t s) (void*, error) {
 	/* What malloc is supposed to do */
 	return ptr, NIL;
 } onfail {
@@ -56,7 +56,7 @@ error, so it might be natural to set their error return value to something like
 `ESTACK`:
 
 ```e2
-func f() (err) {
+func f() (error) {
 	return NIL;
 } onfail {
 	return ESTACK;
