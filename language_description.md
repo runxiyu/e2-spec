@@ -131,8 +131,10 @@ operation and has not been handled at an inner `on_overflow`.
 
 ## Error propagation
 
+We're still clearing up the syntax to allow for more flexibility here.
+
 ```e2
-(int x, char y) do_stuff() {
+func do_stuff() (int x, char y)  {
 	...
 	return 0, 1; // Not an error
 	...
@@ -144,13 +146,13 @@ operation and has not been handled at an inner `on_overflow`.
 } on_fail {
 	return 0, 9; // Another error
 } error {
-	// Consider it an error if (and only if) the 2nd return value is >= 3
-	return y >= 3;
+	// Consider it an error iff the 2nd return value (named "y") is >= 3
+	error_if y >= 3;
 }
 ```
 
 ```e2
-int f() {
+func f() int {
 	// If do_stuff() errored, return ENOCONN
 	int a, char b = do_stuff()!(ENOTCONN);
 
