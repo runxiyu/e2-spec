@@ -1,5 +1,5 @@
 ---
-title: $e^2$ language description
+title: e² language description
 author: Test_User and Runxi Yu
 ---
 
@@ -49,7 +49,7 @@ If something causes `malloc` to be uncallable, e.g. if there is insufficient
 stack space to hold its local variables, it simply returns a meaningless
 pointer and a non-nil error value. Note that although we return "`0`" in the
 example code above, the zero pointer is not guaranteed to be an invalid pointer
-in `e²`.
+in e².
 
 Other functions may have different methods of failure. Some might return an
 error, so it might be natural to set their error return value to something like
