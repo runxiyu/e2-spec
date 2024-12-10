@@ -8,7 +8,7 @@ default: build/language_description.html build/index.html build/style.css
 
 build/%.html: %.md
 	mkdir -p build
-	pandoc --mathml -so $@ -c style.css $<
+	pandoc --preserve-tabs --mathml -so $@ -c style.css $<
 
 build/%.css: %.css
 	mkdir -p build
